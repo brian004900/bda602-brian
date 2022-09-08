@@ -1,0 +1,5 @@
+Najah Izquierdo - PR review
+
+
+- hw1.py Line 80: Random tree variable is in camelcase, random_tree would work
+- hw1.py line 85: Might be good to assign the score and predict variable consistently throughout the file 
