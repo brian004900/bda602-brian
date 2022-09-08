@@ -77,12 +77,13 @@ x_tr = scaler.fit_transform(x)
 
 x_train, x_test, y_train, y_test = train_test_split(x_tr, y, test_size=0.3)
 
-randomTree = RandomForestClassifier(n_estimators=10)
-randomTree.fit(x_train, y_train)
+random_tree = RandomForestClassifier(n_estimators=10)
+random_tree.fit(x_train, y_train)
 
-predict = randomTree.predict(x_test)
+predict = random_tree.predict(x_test)
+score = random_tree.score(x_test, y_test)
 print(predict)
-print(randomTree.score(x_test, y_test))
+print(score)
 
 
 # scikit-learn(k-means)
