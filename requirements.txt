@@ -30,3 +30,5 @@ tenacity==8.0.1
     # via plotly
 threadpoolctl==3.1.0
     # via scikit-learn
+
+matplotlib~=3.5.3
