@@ -1,0 +1,16 @@
+table 1: 
+- Looks great! I inputted it on my terminal and it gave no errors. 
+- batting averages are usually calculated up to the 3rd decimal, you might be able to round it! 
+
+table 2:
+-   This looks great as well! 
+- The batter counts also includes game_id and batter, might be simpler to just use those two tables (game for local date and batter counts)
+
+
+table 3:
+- This is a great table to condense data! 
+
+table 4: 
+- I like the use of the case statement to eliminate issues with divisions of 0. 
+- This also looks great! I like the usuage of the temporary tables to utilize this data. 
+- I attempted to run this last table but it won't load, it might just take extra long to process. 
