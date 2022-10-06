@@ -13,7 +13,7 @@ def main():
     spark = SparkSession.builder.appName(appName).master(master).getOrCreate()
 
     user = "root"
-    password = "0904"
+    password = ""
 
     jdbc_url = "jdbc:mysql://localhost:3306/baseball?permitMysqlScheme"
     jdbc_driver = "org.mariadb.jdbc.Driver"
