@@ -2,3 +2,5 @@ numpy
 pandas
 plotly
 scikit-learn
+pyspark
+pyspark-stubs
