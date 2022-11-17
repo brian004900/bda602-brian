@@ -6,3 +6,6 @@ pyspark
 pyspark-stubs
 statsmodels
 matplotlib
+seaborn
+pycorr
+kaleido

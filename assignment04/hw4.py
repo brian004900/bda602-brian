@@ -132,7 +132,7 @@ def main():
                 showlegend=False,
             )
         )
-        fig.show()
+        # fig.show()
 
     for att in df.columns:
         likely_cat = 1.0 * df[att].nunique() / df[att].count() < 0.05
@@ -161,6 +161,8 @@ def main():
             classes = plot_df.groupby("target")[i].apply(list)
             for i in classes:
                 hist_data.append(i)
+
+            print(hist_data)
 
             group_labels = list(plot_df.groupby("target").groups.keys())
 
@@ -323,7 +325,7 @@ def main():
         plt.show()
 
     # print final table!!!!!
-    print(finaltable)
+    # print(finaltable)
 
 
 if __name__ == "__main__":
