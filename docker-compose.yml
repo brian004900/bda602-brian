@@ -20,6 +20,6 @@ services:
       context: ..
       dockerfile: Dockerfile
     image: baseball
-    restart: always
+    restart: unless-stopped
     volumes:
       - /share
