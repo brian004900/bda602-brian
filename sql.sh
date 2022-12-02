@@ -1,5 +1,5 @@
 #!/bin/sh
-
+sleep 10
 DATABASE_USER=root
 DATABASE_PWD=ma
 DATABASE_NAME=baseball
@@ -9,16 +9,18 @@ DATABASE_FILE="baseball.sql"
 
 mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "show databases;"
 
-mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "CREATE DATABASE ${DATABASE_TO_COPY_INTO};"
-mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb ${DATABASE_TO_COPY_INTO} < ${DATABASE_FILE}
-
-
-mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "show tables;"
+if mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb "use ${DATABASE_NAME}"
+then
+  echo "${DATABASE_NAME} exists"
+else
+  echo "${DATABASE_NAME} does not exist (creating it)"
+  mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "CREATE DATABASE ${DATABASE_TO_COPY_INTO};"
+  mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb ${DATABASE_TO_COPY_INTO} < ${DATABASE_FILE}
+fi
 
 mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "
 USE baseball;
-DROP TABLE IF EXISTS t1;
-create temporary table t1 (
+create temporary table if not exists t1(
 select battersInGame.game_id
 , battersInGame.batter, local_date
 , batter_counts.Hit as hit, batter_counts.atBat as atbat
@@ -41,8 +43,7 @@ CREATE UNIQUE INDEX t1_udx ON t1 (game_id, batter, local_date);
 
 show tables;
 
-DROP TABLE IF EXISTS rolling100;
-create table rolling100 (
+create table if not exists rolling100(
 select
       a.game_id
     , a.batter
@@ -54,7 +55,6 @@ join t1 b
 on b.batter = a.batter
 where b.local_date between DATE_ADD(a.local_date, interval -100 day ) and DATE_ADD(a.local_date, interval -1 day)
 group by a.game_id, a.batter, a.local_date
-having batter = 110029
 order by a.batter, a.local_date);"
 
 Exit
