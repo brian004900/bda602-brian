@@ -9,3 +9,5 @@ matplotlib
 seaborn
 pycorr
 kaleido
+mariadb == 1.0.8
+sqlalchemy
