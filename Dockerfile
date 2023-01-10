@@ -14,6 +14,7 @@ RUN apt-get update \
      mariadb-client \
   && rm -rf /var/lib/apt/lists/*
 
+
 RUN pip3 install --upgrade mysql-connector-python
 RUN python3 -m pip install --upgrade pip
 
@@ -25,6 +26,7 @@ COPY sql.sh /
 COPY baseball.sql .
 
 RUN chmod +x /sql.sh
+
 ENTRYPOINT ["/sql.sh"]
 
 COPY final.py /

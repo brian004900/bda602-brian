@@ -1,6 +1,5 @@
 #!/bin/sh
 sleep 10
-
 DATABASE_USER=root
 DATABASE_PWD=ma
 DATABASE_NAME=baseball
@@ -18,6 +17,7 @@ else
   mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "CREATE DATABASE ${DATABASE_TO_COPY_INTO};"
   mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb ${DATABASE_TO_COPY_INTO} < ${DATABASE_FILE}
 fi
+
 echo "database created"
 mysql -u$DATABASE_USER -p$DATABASE_PWD -h mydb -e "
 use baseball;
@@ -325,4 +325,3 @@ echo"done"
 python /final.py
 
 Exit
-
