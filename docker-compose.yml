@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.2"
 services:
   db:
     image: mariadb
@@ -8,7 +8,8 @@ services:
     volumes:
       - .data:/config
     environment:
-      MARIADB_ROOT_PASSWORD: ma
+
+      MARIADB_ROOT_PASSWORD: #put your password
       MYSQL_ROOT_HOST: "%"
       PUID: 501
       PGID: 20
@@ -17,9 +18,9 @@ services:
 
   baseball:
     build:
-      context: ..
+      context: .
       dockerfile: Dockerfile
     image: baseball
-    restart: unless-stopped
+    restart: on-failure
     volumes:
-      - /share
+      - ./share:/share
